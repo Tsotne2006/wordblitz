@@ -1,0 +1,46 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.game-header-tag {
+    font-size: 1.75rem;
+    font-weight: 700;
+    position: relative;
+    color: var(--key-text);
+    transition: all 0.1s ease;
+    display: inline-block;
+}
+
+.game-header-tag:hover {
+    color: var(--accent);
+}
+
+.nav-link {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-link a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.nav-link a:hover {
+    color: var(--text);
+    background: var(--bg);
+}
+
+.nav-button-active {
+    color: var(--accent) !important;
+    font-weight: 600;
+}

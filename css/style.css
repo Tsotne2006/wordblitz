@@ -1,35 +1,84 @@
-/* ===== custom properties ===== */
+/* @media (max-width: 767px) {
+    .Game-keyboard {
+        margin-top: 34px !important;
+        margin-right: 2px;
+        margin-left: 2px;
+    }
+} */
+
+*, *::before, *::after {
+    /* -webkit-box-sizing: border-box; */
+    box-sizing: border-box;
+}
+
 :root {
-  /* ფერების პალიტრა და დაშორებების ცვლადები */
+    --key-color: #414a5e;
+    --key-color-light: #fff;
+    --color-correct-green: #79b851;
+    --color-elsewhere-yellow: #f3c237;
+    --color-absent-gray: #a4aec4;
+    
 }
 
-/* ===== reset ===== */
-
-/* ===== header ===== */
-
-/* ===== nav — Flexbox აქ გამოიყენე ===== */
-
-/* ===== login გვერდი ===== */
-
-/* ===== main ===== */
-
-/* ===== form ===== */
-
-/* ===== results grid — CSS Grid აქ გამოიყენე ===== */
-
-/* ===== card ===== */
-
-/* ===== saved grid — CSS Grid აქ გამოიყენე ===== */
-
-/* ===== ჩატვირთვის და შეცდომის მდგომარეობები ===== */
-
-/* ===== footer ===== */
-
-/* ===== რესპონსიული ===== */
-@media (max-width: 600px) {
-  /* მობილური */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
 }
 
-@media (min-width: 1024px) {
-  /* დესქტოპი */
+body {
+    position: relative;
+    overflow-x: hidden;
+    font-family: "Rubik", sans-serif;
+    font-size: 16px;
+    line-height: 1.25;
+    background: #f5f5f4;
 }
+
+.Game-keyboard {
+    margin: 32px 0 20px;
+}
+.Game, .Game-keyboard {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-keyboard-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+}
+
+.game-keyboard-button-wide {
+    flex: 2 1;
+    padding: 3px;
+}
+
+.game-keyboard-button {
+    align-items: center;
+    background-color: #dce1ed;
+    color: #414a5e !important;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    color: inherit;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex: 1 1;
+    font-size: 18px;
+    font-weight: 700;
+    justify-content: center;
+    margin: 3px;
+    min-height: 54px;
+    padding: 3px;
+    text-decoration: inherit;
+    text-transform: capitalize;
+    transition: .2s;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+    -webkit-touch-callout: none;
+}
+

@@ -1,0 +1,50 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #FAFAF7;
+    --surface: #FFFFFF;
+    --border: #E5E5E0;
+    --text: #1A1D24;
+    --text-muted: #6B7280;
+    --accent: #d139ff;
+    --accent-hover: #b029e5;
+
+    --correct: #5FA75D;
+    --present: #E8B83E;
+    --absent:  #94989C;
+
+    --tile-border: #D3D6DA;
+    --key-bg: #DCE1ED;
+    --key-bg-hover: #C5CDDE;
+    --key-text: #414A5E;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+html { scroll-behavior: smooth; height: 100%; }
+body {
+    height: 100%;
+    font-family: "Rubik", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text);
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+ul, ol { list-style: none; }
+a { text-decoration: none; color: inherit; }
+button, input, select, textarea {
+  font: inherit;
+}
+button {
+    cursor: pointer
+}

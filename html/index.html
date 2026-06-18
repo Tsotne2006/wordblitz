@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordBlitz - project for CU web programming class - made by tsotne</title>
+    <link rel="stylesheet" href="../css/pageElements/style.css" />
+    <link rel="stylesheet" href="../css/pageElements/header.css" />
+    <link rel="stylesheet" href="../css/pageElements/footer.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+</head>
+
+<body>
+    <header>
+        <h1 class="game-header-tag">
+            <a href="index.html">WordBlitz</a>
+        </h1>
+    </header>
+
+    <main>
+
+        <nav id="menu">
+            <ul class="menu-link">
+                <li><a href="game.html" class="menu-button-inactive">Play</a></li>
+                <li><a href="#howto" class="menu-button-inactive">How To Play</a></li>
+                <li><a href="scoreboard.html" class="menu-button-inactive">Scoreboard</a></li>
+                <li><a href="faq.html" class="menu-button-inactive">FaQ</a></li>
+                <li><a href="#contact" class="menu-button-inactive">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section class="howto" id="howto">
+            <h2>How To Play</h2>
+            <ol>
+                <li>Guess the 5-letter word.</li>
+                <li>Green means the letter is correct and in the right spot.</li>
+                <li>Yellow means the letter is correct but in the wrong spot.</li>
+                <li>Gray means the letter isn't in the word at all.</li>
+                <li>If a letter shows up yellow more than once, the word contains that letter multiple times.</li>
+                <li>Guess as many words as you can in 60 seconds, then submit your run with a name to land on the leaderboard.</li>
+            </ol>
+        </section>
+
+        <form id="rating-form">
+            <p>Rate WordBlitz</p>
+
+            <div id="star-rating">
+                <button type="button" data-value="1">★</button>
+                <button type="button" data-value="2">★</button>
+                <button type="button" data-value="3">★</button>
+                <button type="button" data-value="4">★</button>
+                <button type="button" data-value="5">★</button>
+            </div>
+
+            <label for="liked">What stood out?
+                <select id="liked" name="liked">
+                    <option value="design">Design</option>
+                    <option value="difficulty">Difficulty</option>
+                    <option value="fun">Fun factor</option>
+                </select>
+            </label>
+
+            <label for="comment">Comments
+                <textarea id="comment" name="comment" maxlength="300"></textarea>
+            </label>
+
+            <button type="submit" id="submit-btn">Submit rating</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="contact" id="contact">
+            <p>Contact Me</p>
+            <ul class="contact-list">
+                <li><a href="https://www.linkedin.com/in/tsotne-gigashvili-8aba4a408/" target="_blank"
+                        rel="noopener noreferrer"><img src="../assets/linkedin.png" alt="linkedin logo image">Tsotne
+                        Gigashvili</a></li>
+                <li><img src="../assets/gmail.png" alt="gmail logo image">t_gigashvili@cu.edu.ge</li>
+            </ul>
+        </div>
+
+        <div class="aboutme">
+            <p> my finals project for CU 2026 web programming course </p>
+            <p> hopefully you enjoyed it! </p>
+            <p> made by tsotne gigashvili </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
