@@ -12,6 +12,7 @@ const finalScoreEl = document.getElementById("final-score");
 const nameForm = document.getElementById("name-form");
 const usernameInput = document.getElementById("username");
 const skipBtn = document.getElementById("skip-btn");
+startOverlay.hidden = false;
 
 const ROUND_SECONDS = 60;
 let answer = "";
@@ -20,16 +21,29 @@ let currentGuess = "";
 let gameStarted = false;
 let timerId = null;
 let timeLeft = ROUND_SECONDS;
+const debug_mode = true;
 const score = createScore();
 const response = await fetch("assets/words.txt");
 const words = (await response.text())
     .trim()
     .split(/\r?\n/)
     .map(w => w.trim().toLowerCase()
-)
+    )
 
 function getRandomWord() {
     return words[Math.floor(Math.random() * words.length)];
+}
+
+function isValidKey(key) {
+    return /^[a-z]$/i.test(key);
+}
+
+function handleInput(key) {
+    if (isValidKey(key)) addLetter(key);
+    else if (key === "enter") handleEnter();
+    else if (key === "Enter") handleEnter();
+    else if (key === "erase") removeLetter();
+    else if (key === "Backspace") removeLetter();
 }
 
 function createScore() {
@@ -48,6 +62,19 @@ function renderGuess() {
     });
 }
 
+function resetBoard() {
+    rows.forEach(row => {
+        row.querySelectorAll(".row-letter").forEach(tile => {
+            tile.textContent = "";
+            tile.classList.remove("hit", "present", "absent");
+        });
+    });
+
+    keyboardButtons.forEach(b => b.classList.remove("hit", "present", "absent"));
+    currentRow = 0;
+    currentGuess = "";
+}
+
 function addLetter(letter) {
     if (currentGuess.length >= 5) return;
     currentGuess += letter.toLowerCase();
@@ -59,9 +86,59 @@ function removeLetter() {
     renderGuess();
 }
 
+function newWord() {
+    answer = getRandomWord();
+    if (debug_mode) console.log("answer:", answer);
+}
+
 document.addEventListener("keydown", (e) => {
-    // if (!gameStarted) return startGame();
-    if (/^[a-z]$/i.test(e.key)) addLetter(e.key);
-    else if (e.key === "Backspace") removeLetter();
-    else if (e.key === "Enter") handleEnter();
+    if (!gameStarted) startGame();
+    handleInput(e.key);
 });
+
+keyboardButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        if (!gameStarted) startGame();
+        const key = btn.textContent.trim().toLowerCase();
+        handleInput(key);
+    });
+});
+
+function startGame() {
+    gameStarted = true;
+    startOverlay.hidden = true;
+    newWord();
+    startTimer();
+}
+
+function startTimer() {
+    timeLeft = ROUND_SECONDS;
+    updateTimer();
+    timerId = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        if (timeLeft <= 0) endGame();
+    }, 1000);
+}
+
+function updateTimer() {
+    const m = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+    const s = String(timeLeft % 60).padStart(2, "0");
+    timerDisplay.textContent = `${m}:${s}`;
+}
+
+function resetGame() {
+    nameModal.hidden = true;
+    resetBoard();
+    score.reset();
+    scoreDisplay.textContent = "0";
+    timerDisplay.textContent = "00:00";
+    gameStarted = false;
+    startOverlay.hidden = false;
+}
+
+function endGame() {
+    clearInterval(timerId);
+    finalScoreEl.textContent = score.get();
+    nameModal.hidden = false;
+}
