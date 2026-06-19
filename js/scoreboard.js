@@ -1,9 +1,10 @@
-import { getScoresBaked } from "./storage.js";
+import { getScores } from "./storage.js";
 
 const tbody = document.getElementById("scoreboard-body");
 
+//RENDER ALL OF THE SAVED SCORES
 function renderScores() {
-    const scores = getScoresBaked();
+    const scores = getScores();
     tbody.innerHTML = "";
 
     scores.forEach((entry, index) => {

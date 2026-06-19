@@ -1,6 +1,6 @@
 const STORAGE_KEY = "wordblitz-scores";
 
-// Get the saved scores, or an empty array if there's nothing yet
+// GET SAVED SCORES
 export function getScores() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
@@ -11,6 +11,7 @@ export function getScores() {
     }
 }
 
+// BAKED DATA FOR TESTING PURPOSES
 export function getScoresBaked() {
     let data = [];
     data.push({ name: "Alice", score: 150 });
@@ -19,7 +20,7 @@ export function getScoresBaked() {
     return data;
 }
 
-// Add one new score and write the whole array back
+// ADD A NEW SCORE
 export function saveScore(name, score) {
     const scores = getScores();
     scores.push({ name, score });

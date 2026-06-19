@@ -129,11 +129,11 @@
     cursor: pointer;
 
     color: var(--text-muted);
-    transition: color 0.15s ease;
+    transition: color 0.1s ease;
 }
 
-#star-rating button:hover {
-    color: #ffd700;
+#star-rating button.filled {
+    color: gold;
 }
 
 #rating-form label {

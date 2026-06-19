@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/pageElements/header.css" />
     <link rel="stylesheet" href="css/pageElements/footer.css" />
     <link rel="stylesheet" href="css/index.css" />
+    <script type="module" src="js/index.js" defer></script>
 </head>
 
 <body>
@@ -37,7 +38,8 @@
                 <li>Yellow means the letter is correct but in the wrong spot.</li>
                 <li>Gray means the letter isn't in the word at all.</li>
                 <li>If a letter shows up yellow more than once, the word contains that letter multiple times.</li>
-                <li>Guess as many words as you can in 60 seconds, then submit your run with a name to land on the leaderboard.</li>
+                <li>Guess as many words as you can in 60 seconds, then submit your run with a name to land on the
+                    leaderboard.</li>
             </ol>
         </section>
 
@@ -45,11 +47,11 @@
             <p>Rate WordBlitz</p>
 
             <div id="star-rating">
-                <button type="button" data-value="1">★</button>
-                <button type="button" data-value="2">★</button>
-                <button type="button" data-value="3">★</button>
-                <button type="button" data-value="4">★</button>
-                <button type="button" data-value="5">★</button>
+                <button id="star-rating-button" type="button" data-value="1">★</button>
+                <button id="star-rating-button" type="button" data-value="2">★</button>
+                <button id="star-rating-button" type="button" data-value="3">★</button>
+                <button id="star-rating-button" type="button" data-value="4">★</button>
+                <button id="star-rating-button" type="button" data-value="5">★</button>
             </div>
 
             <label for="liked">What stood out?

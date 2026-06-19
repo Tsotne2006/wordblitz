@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/pageElements/style.css" />
     <link rel="stylesheet" href="css/pageElements/header.css" />
     <link rel="stylesheet" href="css/pageElements/footer.css" />
+    <link rel="stylesheet" href="css/game.css" />
+    <script type="module" src="js/gametesting.js"></script>
 </head>
 
 <body>
@@ -28,7 +30,7 @@
         <section class="game" id="game">
             <div class="game-container">
 
-                <div class="start-overlay" id="start-overlay" hidden>
+                <div class="start-overlay" id="start-overlay">
                     <p>Press any key to start</p>
                 </div>
 
@@ -128,7 +130,8 @@
 
             <form id="name-form" class="modal-form">
                 <label for="username">enter your name</label>
-                <input type="text" id="username" name="username" maxlength="12" minlength="1" required autocomplete="off" />
+                <input type="text" id="username" name="username" maxlength="12" minlength="1" required
+                    autocomplete="off" />
                 <button type="submit">save to scoreboard</button>
             </form>
             <button type="button" id="skip-btn" class="modal-skip">continue without saving</button>
