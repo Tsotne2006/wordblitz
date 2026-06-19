@@ -42,7 +42,6 @@ function isValidKey(key) {
 }
 
 function handleInput(key) {
-    if (debug_mode) console.log("key pressed:", key);
     if (!acceptingInput) return;
     if (isValidKey(key)) addLetter(key);
     else if (key === "enter") handleEnter();
@@ -91,7 +90,6 @@ function removeLetter() {
 
 function newWord() {
     answer = getRandomWord();
-    flashMessage("New word generated!", 700);
     if (debug_mode || log_the_words) console.log("answer:", answer);
 }
 
@@ -105,6 +103,10 @@ function flashMessage(text, duration = 1000) {
     }, duration);
 }
 
+function flashOldWord(duration = 1000) {
+    const oldAnswer = answer;
+    if (oldAnswer !== "") flashMessage(`The word was: ${oldAnswer}`, duration);
+}
 
 function checkGuess(guess, answer) {
     guess = guess.toLowerCase();
@@ -194,11 +196,12 @@ async function handleEnter() {
 
     if (currentRow >= rows.length) {
         acceptingInput = false;
+        flashOldWord(1500);
         setTimeout(() => {
             resetBoard();
             newWord();
             acceptingInput = true;
-        }, 700);
+        }, 1500);
     }
 }
 
