@@ -232,6 +232,20 @@ main {
     justify-content: center;
     z-index: 10;
     pointer-events: none;
+    text-transform: uppercase;
+    border-radius: 15px;
+}
+
+.start-overlay p {
+    box-shadow: 0 0 12px color-mix(in srgb, #000000 50%, transparent);
+    background: rgba(255, 255, 255, 1);
+    width: 15rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    margin-bottom: 27.5%;
 }
 
 .start-card {

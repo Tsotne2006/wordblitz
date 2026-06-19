@@ -16,7 +16,7 @@ function resetRating() {
     paintStars(currentRating);
 }
 
-stars.forEach(star => {                       // each handler closes over its star
+stars.forEach(star => {
     star.addEventListener("click", () => {
         const starValue = Number(star.dataset.value)
 
@@ -32,12 +32,12 @@ stars.forEach(star => {                       // each handler closes over its st
 
 stars.forEach(star => {
     star.addEventListener("mouseenter", () => {
-        paintStars(Number(star.dataset.value));   // preview 1..N while hovering
+        paintStars(Number(star.dataset.value));
     });
 });
 
 starContainer.addEventListener("mouseleave", () => {
-    paintStars(currentRating);                     // revert to the locked-in rating
+    paintStars(currentRating);
 });
 
 ratingForm.addEventListener("submit", async (event) => {
