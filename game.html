@@ -5,27 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WordBlitz - project for CU web programming class - made by tsotne</title>
-    <link rel="stylesheet" href="../css/testing.css" />
+    <link rel="stylesheet" href="css/pageElements/style.css" />
+    <link rel="stylesheet" href="css/pageElements/header.css" />
+    <link rel="stylesheet" href="css/pageElements/footer.css" />
+    <link rel="stylesheet" href="css/game.css" />
 </head>
 
 <body>
 
     <header>
-        <h1 class="game-header-tag" id="game-tag">WordBlitz</h1>
+        <h1 class="game-header-tag">
+            <a href="index.html">WordBlitz</a>
+        </h1>
         <nav>
             <ul class="nav-link">
-                <li><a href="index.html" class="nav-button-active">Play</a></li>
+                <li><a href="game.html" class="nav-button-active">Play</a></li>
                 <li><a href="scoreboard.html" class="nav-button-inactive">Scoreboard</a></li>
-                <li><a href="aboutme.html" class="nav-button-inactive">About Me</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-
         <section class="game" id="game">
             <div class="game-container">
+
+                <div class="game-info">
+                    <p class="game-timer">00:00</p>
+                    <p class="game-score">Score: 0</p>
+                </div>
+
                 <div class="game-rows">
+                    <div class="game-row">
+                        <div class="row-letter"></div>
+                        <div class="row-letter"></div>
+                        <div class="row-letter"></div>
+                        <div class="row-letter"></div>
+                        <div class="row-letter"></div>
+                    </div>
                     <div class="game-row">
                         <div class="row-letter"></div>
                         <div class="row-letter"></div>
@@ -87,7 +103,9 @@
                         <div class="game-keyboard-button">l</div>
                     </div>
                     <div class="game-keyboard-row">
-                        <div class="game-keyboard-button game-keyboard-button-wide">backspace</div>
+                        <div class="game-keyboard-button game-keyboard-button-wide">
+                            erase
+                        </div>
                         <div class="game-keyboard-button">z</div>
                         <div class="game-keyboard-button">x</div>
                         <div class="game-keyboard-button">c</div>
@@ -98,31 +116,29 @@
                         <div class="game-keyboard-button game-keyboard-button-wide">enter</div>
                     </div>
                 </div>
-
             </div>
-
         </section>
 
-        <section class="howto">
-            <p>How To Play</p>
-            <ol>
-                <li>Guess the 5-letter word.</li>
-                <li>Green means the letter is correct and in the right spot.</li>
-                <li>Yellow means the letter is correct but in the wrong spot.</li>
-                <li>Gray means the letter isn't in the word at all.</li>
-                <li>If a letter shows up yellow more than once, the word contains that letter multiple times.</li>
-                <li>Guess as many words as you can in 60 seconds, then submit your run with a name to land on the
-                    leaderboard.</li>
-            </ol>
-        </section>
 
         <!-- timer, score, guess input, letter tiles, start/stop buttons -->
     </main>
 
     <footer>
-        <p> my finals project for CU 2026 web programming course </p>
-        <p> made by tsotne gigashvili </p>
-        <p> hopefully you enjoyed it thanks for the review </p>
+        <div class="contact" id="contact">
+            <p>Contact Me</p>
+            <ul class="contact-list">
+                <li><a href="https://www.linkedin.com/in/tsotne-gigashvili-8aba4a408/" target="_blank"
+                        rel="noopener noreferrer"><img src="assets/linkedin.png" alt="linkedin logo image">Tsotne
+                        Gigashvili</a></li>
+                <li><img src="assets/gmail.png" alt="gmail logo image">t_gigashvili@cu.edu.ge</li>
+            </ul>
+        </div>
+
+        <div class="aboutme">
+            <p> my finals project for CU 2026 web programming course </p>
+            <p> hopefully you enjoyed it! </p>
+            <p> made by tsotne gigashvili </p>
+        </div>
     </footer>
 
 </body>
