@@ -11,6 +11,14 @@ export function getScores() {
     }
 }
 
+export function getScoresBaked() {
+    let data = [];
+    data.push({ name: "Alice", score: 150 });
+    data.push({ name: "Georgie", score: 100 });
+    data.push({ name: "Demetrius", score: 89 });
+    return data;
+}
+
 // Add one new score and write the whole array back
 export function saveScore(name, score) {
     const scores = getScores();
