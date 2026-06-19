@@ -29,9 +29,13 @@
         <section class="game" id="game">
             <div class="game-container">
 
+                <div class="start-overlay" id="start-overlay" hidden>
+                    <p>Press any key to start</p>
+                </div>
+
                 <div class="game-info">
                     <p class="game-timer">00:00</p>
-                    <p class="game-score">Score: 0</p>
+                    <p class="game-score">Score: <span id="current-score">0</span></p>
                 </div>
 
                 <div class="game-rows">
@@ -103,9 +107,7 @@
                         <div class="game-keyboard-button">l</div>
                     </div>
                     <div class="game-keyboard-row">
-                        <div class="game-keyboard-button game-keyboard-button-wide">
-                            erase
-                        </div>
+                        <div class="game-keyboard-button game-keyboard-button-wide">erase</div>
                         <div class="game-keyboard-button">z</div>
                         <div class="game-keyboard-button">x</div>
                         <div class="game-keyboard-button">c</div>
@@ -118,10 +120,21 @@
                 </div>
             </div>
         </section>
-
-
-        <!-- timer, score, guess input, letter tiles, start/stop buttons -->
     </main>
+
+    <div class="modal-overlay" id="name-modal" hidden>
+        <div class="modal">
+            <h2 class="modal-title">time's up!</h2>
+            <p class="modal-score">score: <span id="final-score">0</span></p>
+
+            <form id="name-form" class="modal-form">
+                <label for="username">enter your name</label>
+                <input type="text" id="username" name="username" maxlength="12" minlength="1" required autocomplete="off" />
+                <button type="submit">save to scoreboard</button>
+            </form>
+            <button type="button" id="skip-btn" class="modal-skip">continue without saving</button>
+        </div>
+    </div>
 
     <footer>
         <div class="contact" id="contact">
