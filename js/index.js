@@ -1,3 +1,4 @@
+import { showNotification } from "./notify.js";
 const WEBHOOK_URL = "https://discord.com/api/webhooks/1517542130044633261/yGk-SKFZSWU8LWPIF6UtqA7C-2mJTJ0aXlpC5XqEfTSqas-yffcpqKB3dqIzndthDzum";
 
 const stars = document.querySelectorAll("#star-rating-button");
@@ -44,7 +45,7 @@ ratingForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     if (currentRating === 0) {
-        // add a notification that the user must select a rating before submitting
+        showNotification("Please select a rating before submitting.");
         return;
     }
 
@@ -61,12 +62,13 @@ ratingForm.addEventListener("submit", async (event) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(message),
         });
-        // tell the user the rating was sent successfully
+
+        showNotification("Rating sent successfully!");
         ratingForm.reset();
 
         paintStars(0);
         currentRating = 0;
     } catch (err) {
-        // alert the user of the error and suggest trying again later
+        showNotification("Failed to send rating. Please try again later.");
     }
 });
