@@ -45,3 +45,14 @@ header {
     color: var(--accent) !important;
     font-weight: 600;
 }
+
+@media (max-width: 600px) {
+    header {
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    .game-header-tag { font-size: 1.4rem; }
+    .nav-link a { padding: 0.4rem 0.7rem; font-size: 0.85rem; }
+}

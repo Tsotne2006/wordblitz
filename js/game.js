@@ -168,8 +168,6 @@ async function handleEnter() {
 
     checking = true;
     try {
-        showNotification("Checking…");
-
         let valid;
         try {
             valid = await isValidWord(currentGuess);

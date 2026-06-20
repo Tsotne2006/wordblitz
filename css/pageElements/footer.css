@@ -42,3 +42,15 @@ footer {
     height: 24px;
     object-fit: contain;
 }
+
+@media (max-width: 600px) {
+    footer {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+    }
+    .contact { justify-self: center; }
+    .aboutme { grid-column: 1; }
+    .contact-list li,
+    .contact-list a { justify-content: center; }
+}

@@ -26,3 +26,7 @@
 .scoreboard-table th {
     font-weight: 700;
 }
+
+@media (max-width: 600px) {
+    .scoreboard { margin-top: 10vh; }
+}
