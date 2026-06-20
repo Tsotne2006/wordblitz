@@ -24,6 +24,7 @@ let gameStarted = false;
 let timerId = null;
 let timeLeft = ROUND_SECONDS;
 let acceptingInput = false;
+let checking = false;
 const debug_mode = true;
 const log_the_words = true;
 const score = createScore();
@@ -144,7 +145,7 @@ function paintRow(guess, result) {
         tiles[i].classList.add(status);
         const key = keyButton(guess[i]);
 
-        if (!key || key.classList.contains("hit")) return;  // green stays green
+        if (!key || key.classList.contains("hit")) return;
 
         if (status === "hit") {
             key.classList.remove("present", "absent");
@@ -159,51 +160,49 @@ function paintRow(guess, result) {
 }
 
 async function handleEnter() {
+    if (checking) return;                       // ignore spam while a guess is in flight
     if (currentGuess.length < 5) {
         showNotification("Not enough letters");
         return;
     }
 
-    let valid;
-
+    checking = true;
     try {
-        valid = await isValidWord(currentGuess);
-    } catch (err) {
-        showNotification("Couldn't reach the dictionary");
-        return;
-    }
+        showNotification("Checking…");
 
-    if (!valid) {
-        showNotification("That word doesn't exist");
-        return;
-    }
+        let valid;
+        try {
+            valid = await isValidWord(currentGuess);
+        } catch (err) {
+            showNotification("Couldn't reach the dictionary");
+            return;
+        }
+        if (!valid) {
+            showNotification("That word doesn't exist");
+            return;
+        }
 
-    const guess = currentGuess;
-    const result = checkGuess(guess, answer);
-    paintRow(guess, result);
+        const guess = currentGuess;
+        const result = checkGuess(guess, answer);
+        paintRow(guess, result);
 
-    if (result.every(s => s === "hit")) {
-        scoreDisplay.textContent = score.add(1);
-        acceptingInput = false;
-        setTimeout(() => {
-            resetBoard();
-            newWord();
-            acceptingInput = true;
-        }, 700);
-        return;
-    }
+        if (result.every(s => s === "hit")) {
+            scoreDisplay.textContent = score.add(1);
+            acceptingInput = false;
+            setTimeout(() => { resetBoard(); newWord(); acceptingInput = true; }, 700);
+            return;
+        }
 
-    currentRow++;
-    currentGuess = "";
+        currentRow++;
+        currentGuess = "";
 
-    if (currentRow >= rows.length) {
-        acceptingInput = false;
-        flashOldWord(1500);
-        setTimeout(() => {
-            resetBoard();
-            newWord();
-            acceptingInput = true;
-        }, 1500);
+        if (currentRow >= rows.length) {
+            acceptingInput = false;
+            flashOldWord(1500);
+            setTimeout(() => { resetBoard(); newWord(); acceptingInput = true; }, 1500);
+        }
+    } finally {
+        checking = false;
     }
 }
 
