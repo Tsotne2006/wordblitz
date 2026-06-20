@@ -1,5 +1,6 @@
 import { isValidWord } from "./api.js";
 import { saveScore } from "./storage.js";
+import { showNotification } from "./notify.js";
 
 const rows = document.querySelectorAll(".game-row");
 const keyboardButtons = document.querySelectorAll(".game-keyboard-button");
@@ -159,6 +160,7 @@ function paintRow(guess, result) {
 
 async function handleEnter() {
     if (currentGuess.length < 5) {
+        showNotification("Not enough letters");
         return;
     }
 
@@ -167,12 +169,12 @@ async function handleEnter() {
     try {
         valid = await isValidWord(currentGuess);
     } catch (err) {
-        // notify the user of the error after i add notifications :(
+        showNotification("Couldn't reach the dictionary");
         return;
     }
 
     if (!valid) {
-        // word not found quick flash
+        showNotification("That word doesn't exist");
         return;
     }
 
